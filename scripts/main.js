@@ -16,37 +16,6 @@ var gameData = {
   vigorCost: 100
 }
 
-function gainVim() {
-  gameData.vim += gameData.vimPerClick
-  updateDisplayValues()
-  addMessage("Find the Enthusiasm")
-}
-
-function vigorToVim() {
-  gameData.vim += gameData.vigor
-  updateDisplayValues()
-}
-
-function buyVimPerClick() {
-  if (gameData.vim >= gameData.vimPerClickCost) {
-    gameData.vim -= gameData.vimPerClickCost
-    gameData.vimPerClick += 1
-    gameData.vimPerClickCost *= 2
-    updateDisplayValues()
-  }
-}
-
-function gainVigor() {
-  if (gameData.vim >= gameData.vigorCost) {
-    gameData.vim -= gameData.vigorCost
-    gameData.vigor += gameData.vigorPerClick
-    updateDisplayValues()
-  }
-}
-
-var mainGameLoop = window.setInterval(function() {vigorToVim()}, 1000)
-
-
 var saveGameLoop = window.setInterval(function() {
   localStorage.setItem("tendencySave", JSON.stringify(gameData))
 }, 15000)
