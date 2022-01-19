@@ -1,0 +1,45 @@
+div#occultTab {
+  margin-left: 200px;
+}
+
+button#fullReset {
+  margin-left: 200px;
+  margin-top: 200px;
+}
+
+/* Text Side Bar 
+Credit to Notifications in A Dark Room for structure*/
+div#textBar {
+  position: absolute;
+	top: 20px;
+	left: 10px;
+	height: 700px;
+	width: 200px;
+	overflow: hidden;
+}
+
+div#textBar div.textBar {
+	margin-bottom: 10px;
+}
+
+div#textBarFadeOut {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	background: -webkit-linear-gradient(
+		rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%
+	);
+	background: linear-gradient(
+		rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%
+	);
+	filter: alpha(
+		Opacity=0, FinishOpacity=100, Style=1, StartX=0, StartY=0, FinishX=0, FinishY=500
+	);
+}
+
+.text {
+  margin-bottom: 5px;
+}

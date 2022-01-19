@@ -19,6 +19,7 @@ var gameData = {
 function gainVim() {
   gameData.vim += gameData.vimPerClick
   updateDisplayValues()
+  addMessage("Find the Enthusiasm")
 }
 
 function vigorToVim() {
