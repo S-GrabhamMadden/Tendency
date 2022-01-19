@@ -29,6 +29,20 @@ function fullReset() {
   gameData = JSON.parse(JSON.stringify(defaultGameData))
 }
 
+function openTab(event, tabName) {
+  var i, tabContent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  event.currentTarget.className += " active";
+}
+
 function updateDisplayValues() {
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 
