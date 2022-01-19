@@ -1,7 +1,10 @@
 function gainVim() {
   gameData.vim += gameData.vimPerClick
   updateDisplayValues()
-  addMessage("Find the Enthusiasm")
+  gameData.gainVimClicks+=1;
+  if (gameData.gainVimClicks == 1) {
+    addMessage("There's a little Vim in everything. The art is in squeezing it out.")
+  }
 }
 
 function vigorToVim() {

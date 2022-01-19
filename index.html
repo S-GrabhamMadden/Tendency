@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/mainstylesheet.css" />
     <script src="scripts/textsidebar.js" charset="utf-8" type="text/javascript"></script>
     <script src="scripts/tendencytab.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/mundanetab.js" charset="utf-8" type="text/javascript"></script>
     <script src="scripts/main.js" charset="utf-8" type="text/javascript"></script>
   </head>
   <body>
@@ -15,11 +16,12 @@
       <div class="tabWrapper">
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'mundaneTab')" id="defaultOpen">Mundanity</button>
-          <button class="tablinks" onclick="openTab(event, 'occultTab')">The Tendency</button>
+          <button class="tablinks" onclick="openTab(event, 'occultTab')" id="occultTabButton">The Tendency</button>
         </div>
         
         <div id="mundaneTab" class="tabcontent">
-          Dull, sorrowful.
+          <p>Dull, sorrowful.</p>
+          <button onclick="unlockOccult()">Unlock Something More</button>
         </div>
         
         <div id="occultTab" class="tabcontent">
@@ -42,6 +44,9 @@
     <script>
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
+      if (!unlockedTabs.occult) {
+        document.getElementById("occultTabButton").style.display="none"
+      }
     </script>
   </body>
 </html>

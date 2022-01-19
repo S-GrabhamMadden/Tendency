@@ -4,7 +4,8 @@ var defaultGameData = {
   vimPerClickCost: 10,
   vigor: 0,
   vigorPerClick: 1,
-  vigorCost: 100
+  vigorCost: 100,
+  gainVimClicks: 0
 }
 
 var gameData = {
@@ -13,20 +14,35 @@ var gameData = {
   vimPerClickCost: 10,
   vigor: 0,
   vigorPerClick: 1,
-  vigorCost: 100
+  vigorCost: 100,
+  gainVimClicks: 0
+}
+
+var unlockedTabs = {
+  occult: false
 }
 
 var saveGameLoop = window.setInterval(function() {
   localStorage.setItem("tendencySave", JSON.stringify(gameData))
+  localStorage.setItem("tendencySaveUnlockTabs", JSON.stringify(unlockedTabs))
 }, 15000)
+
 var savegame = JSON.parse(localStorage.getItem("tendencySave"))
+var savegameTabs = JSON.parse(localStorage.getItem("tendencySaveUnlockTabs"))
 if (savegame !== null) {
   gameData = savegame
+}
+if (savegameTabs !== null) {
+  unlockedTabs = savegameTabs
 }
 
 function fullReset() {
   //Dirty way to clone values without setting as a reference
   gameData = JSON.parse(JSON.stringify(defaultGameData))
+  //hide tabs not unlocked
+  document.getElementById("defaultOpen").click();
+  document.getElementById("occultTabButton").style.display="none"
+  clearAllText()
 }
 
 function openTab(event, tabName) {
