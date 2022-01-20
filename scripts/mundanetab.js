@@ -13,6 +13,16 @@ function unlockMundane() {
 function mundaneWork() {
   gameData.finances += gameData.wage
   updateDisplayValues()
-  
-  
+  processDay()
+}
+
+function processDay() {
+  //time out day buttons
+  var buttons = document.getElementsByClassName('DayButton')
+  Array.from(buttons).forEach((b) => {
+    b.disabled = true;
+    setTimeout(function() {
+        b.disabled = false;
+    }, 1000);
+  });
 }

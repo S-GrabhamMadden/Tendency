@@ -84,7 +84,7 @@ function openTab(event, tabName) {
 
 function updateDisplayValues() {
   //MUNDANE TAB
-  document.getElementById("wages").innerHTML = "<button class=\"DayButton\" onclick=\"mundaneWork()\">Work</button> Wage: $" + gameData.wage
+  document.getElementById("wageText").innerHTML = "Wage: $" + gameData.wage
   document.getElementById("finances").innerHTML = "Finances: $" + gameData.finances
   //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
