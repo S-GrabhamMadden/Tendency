@@ -8,6 +8,7 @@ var defaultGameData = {
   study: 1,
   workClicks: 0,
   workStressGain: 2,
+  daysToBill: 28,
   vim: 0,
   vimPerClick: 1,
   vimPerClickCost: 10,
@@ -27,6 +28,7 @@ var gameData = {
   study: 1,
   workClicks: 0,
   workStressGain: 2,
+  daysToBill: 28,
   vim: 0,
   vimPerClick: 1,
   vimPerClickCost: 10,
@@ -93,6 +95,7 @@ function updateDisplayValues() {
   document.getElementById("wageText").innerHTML = "Wage: $" + gameData.wage
   document.getElementById("finances").innerHTML = "Finances: $" + gameData.finances
   document.getElementById("stress").innerHTML = "Stress: " + gameData.stressTotal
+  document.getElementById("daysRemainingSpan").innerHTML = gameData.daysToBill
   //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 

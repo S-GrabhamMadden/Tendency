@@ -13,7 +13,6 @@ function unlockMundane() {
 function mundaneWork() {
   gameData.finances += gameData.wage
   gameData.stressTotal += gameData.workStressGain
-  updateDisplayValues()
   processDay()
   gameData.workClicks+=1;
   if (gameData.workClicks == 1) {
@@ -23,11 +22,14 @@ function mundaneWork() {
 
 function mundaneLeisure() {
   gameData.stressTotal -= gameData.relaxation
-  updateDisplayValues()
   processDay()
 }
 
 function processDay() {
+  gameData.daysToBill -= 1
+  if (gameData.daysToBill == 0) {
+    billsDue()
+  }
   //time out day buttons
   var buttons = document.getElementsByClassName('DayButton')
   Array.from(buttons).forEach((b) => {
@@ -37,6 +39,13 @@ function processDay() {
     }, 1000);
   });
   checkUnlocks();
+  updateDisplayValues()
+}
+
+function billsDue() {
+  gameData.daysToBill = 28
+  gameData.finances -= gameData.bills
+  updateDisplayValues()
 }
 
 function checkUnlocks() {
