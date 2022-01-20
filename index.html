@@ -20,8 +20,14 @@
         </div>
         
         <div id="mundaneTab" class="tabcontent">
-          <p>Dull, sorrowful.</p>
-          <button onclick="unlockOccult()">Unlock Something More</button>
+          <div id="initialStateWrapper">
+            <p>A small apartment near enough to the center of the city, and the lifeline of steady if altogether unfulfilling employment. You live a life conventional, unexceptional. On rare nights of stillness, your dreams are anything but; compelling and authoritative visions of a past never lived, or a future unobtainable, conveyed in rich metaphor. A new dawn awaits you tomorrow, soon a new year, even a new President if such things were of interest to you. But tonight, it is still, and you dream of golden eggs and unfamiliar cities.</p>
+            <button onclick="unlockMundane()">Wake</button>
+          </div>
+          <div id="regularMundaneWrapper">
+            <p>Dull, sorrowful.</p>
+            <button onclick="unlockOccult()">Unlock Something More</button>
+          </div>
         </div>
         
         <div id="occultTab" class="tabcontent">
@@ -46,6 +52,14 @@
       document.getElementById("defaultOpen").click();
       if (!unlockedTabs.occult) {
         document.getElementById("occultTabButton").style.display="none"
+      }
+      if (!unlockedTabs.mundane) {
+        document.getElementById("regularMundaneWrapper").style.display="none"
+        document.getElementById("initialStateWrapper").style.display="inline"
+      }
+      else {
+        document.getElementById("regularMundaneWrapper").style.display="inline"
+        document.getElementById("initialStateWrapper").style.display="none"
       }
     </script>
   </body>

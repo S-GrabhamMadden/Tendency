@@ -19,6 +19,7 @@ var gameData = {
 }
 
 var unlockedTabs = {
+  mundane: false,
   occult: false
 }
 
@@ -39,9 +40,14 @@ if (savegameTabs !== null) {
 function fullReset() {
   //Dirty way to clone values without setting as a reference
   gameData = JSON.parse(JSON.stringify(defaultGameData))
+  //reset unlocked tabs as well
+  unlockedTabs.mundane = false;
+  unlockedTabs.occult = false;
   //hide tabs not unlocked
   document.getElementById("defaultOpen").click();
   document.getElementById("occultTabButton").style.display="none"
+  document.getElementById("regularMundaneWrapper").style.display="none"
+  document.getElementById("initialStateWrapper").style.display="inline"
   clearAllText()
 }
 
