@@ -12,8 +12,13 @@ function unlockMundane() {
 
 function mundaneWork() {
   gameData.finances += gameData.wage
+  gameData.stressTotal += gameData.workStressGain
   updateDisplayValues()
   processDay()
+  gameData.workClicks+=1;
+  if (gameData.workClicks == 1) {
+    addMessage("Another eight hours lost, another eight dollars gained.")
+  }
 }
 
 function processDay() {
