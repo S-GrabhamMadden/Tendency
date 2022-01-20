@@ -22,6 +22,9 @@ function mundaneWork() {
 
 function mundaneLeisure() {
   gameData.stressTotal -= gameData.relaxation
+  if (gameData.stressTotal < 0) {
+    gameData.stressTotal = 0
+  }
   processDay()
 }
 
