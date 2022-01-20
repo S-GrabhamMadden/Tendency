@@ -3,6 +3,19 @@ button#fullReset {
   margin-top: 200px;
 }
 
+div.ADayInfoLabels {
+  margin-left: 10px;
+}
+
+div.mundaneTabColumn {
+  width:33%;
+  float: left;
+}
+
+span.red {
+  color: #ff0000;
+}
+
 /* Text Side Bar 
 Credit to Notifications in A Dark Room for structure*/
 div#textBar {
@@ -75,6 +88,7 @@ div.tabWrapper {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  overflow: hidden;
 }
 
 .tabcontent {
