@@ -44,9 +44,9 @@
               <p id="bills" class="ADayInfoLabels"><b>BILLS DUE:</b> 28 Days<br>
               <span class="red">$100</span></p>
               <p id="thingsOwned" class="ADayInfoLabels">Residence: Small Apartment<br>
-              Institution: Night Classes<br>
+              <span id="institution">Institution: Night Classes<br></span>
               Accoutrements: </p>
-              <p id="purchaseButtons" class="ADayInfoLabels"><button onclick="buyThing()">Buy new thing $20</button></p>
+              <p id="purchaseButtons" class="ADayInfoLabels"><button onclick="buyThing()">Buy a Radio $20</button></p>
             </div>
             
             <div id="debugUnlockOccult">
@@ -87,6 +87,12 @@
       else {
         document.getElementById("regularMundaneWrapper").style.display="inline"
         document.getElementById("initialStateWrapper").style.display="none"
+      }
+      if (!unlockedTabs.mundaneLeisure) {document.getElementById("relaxation").style.display="none"}
+      if (!unlockedTabs.mundaneClasses) {
+        document.getElementById("study").style.display="none"
+        document.getElementById("institution").style.display="none"
+        document.getElementById("education").style.display="none"
       }
     </script>
   </body>

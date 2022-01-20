@@ -20,6 +20,9 @@ var gameData = {
 
 var unlockedTabs = {
   mundane: false,
+  mundaneLeisure: false,
+  mundaneClasses: false,
+  mundaneAccoutrements: false,
   occult: false
 }
 
