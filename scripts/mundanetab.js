@@ -21,6 +21,12 @@ function mundaneWork() {
   }
 }
 
+function mundaneLeisure() {
+  gameData.stressTotal -= gameData.relaxation
+  updateDisplayValues()
+  processDay()
+}
+
 function processDay() {
   //time out day buttons
   var buttons = document.getElementsByClassName('DayButton')
