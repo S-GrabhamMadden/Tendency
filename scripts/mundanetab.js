@@ -30,4 +30,15 @@ function processDay() {
         b.disabled = false;
     }, 1000);
   });
+  checkUnlocks();
+}
+
+function checkUnlocks() {
+  if (!unlockedTabs.mundaneLeisure) {
+    if (gameData.stressTotal >= 10) {
+      unlockedTabs.mundaneLeisure = true;
+      document.getElementById("relaxation").style.display="inline"
+      addMessage("\"All work and no play makes Jack a dull boy\", or something like that.")
+    }
+  }
 }
