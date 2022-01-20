@@ -28,7 +28,7 @@
             <div id="ADayWrapper" class="mundaneTabColumn">
               <h2>Days</h2>
               <p id="wages" class="ADayInfoLabels"><button class="DayButton" onclick="mundaneWork()">Work</button> <span id="wageText">Wage: $8</span></p>
-              <p id="relaxation" class="ADayInfoLabels"><button class="DayButton" onclick="mundaneLeisure()">Leisure</button> Relaxation: 1</p>
+              <p id="relaxation" class="ADayInfoLabels"><button class="DayButton" onclick="mundaneLeisure()">Leisure</button> <span id="relaxationText">Relaxation: 1</scan></p>
               <p id="study" class="ADayInfoLabels"><button class="DayButton" onclick="mundaneClasses()">Classes</button> Study: 1</p>
             </div>
             
@@ -45,8 +45,8 @@
               <span class="red">$100</span></p>
               <p id="thingsOwned" class="ADayInfoLabels">Residence: Small Apartment<br>
               <span id="institution">Institution: Night Classes<br></span>
-              Accoutrements: </p>
-              <p id="purchaseButtons" class="ADayInfoLabels"><button onclick="buyThing()">Buy a Radio $20</button></p>
+              <span id="accoutrementsList">Accoutrements: </span></p>
+              <p id="purchaseButtons" class="ADayInfoLabels"><button id="radioBuyButton" onclick="buyRadio()">Buy a Radio $20</button></p>
             </div>
             
             <div id="debugUnlockOccult">

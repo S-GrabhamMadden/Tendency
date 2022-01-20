@@ -38,6 +38,14 @@ var gameData = {
   gainVimClicks: 0
 }
 
+var defaultUnlockedTabs = {
+  mundane: false,
+  mundaneLeisure: false,
+  mundaneClasses: false,
+  mundaneAccoutrements: false,
+  occult: false
+}
+
 var unlockedTabs = {
   mundane: false,
   mundaneLeisure: false,
@@ -46,33 +54,46 @@ var unlockedTabs = {
   occult: false
 }
 
+var defaultAccoutrementsPurchases = {
+  radio: false
+}
+
+var accoutrementsPurchases = {
+  radio: false
+}
+
 var saveGameLoop = window.setInterval(function() {
   localStorage.setItem("tendencySave", JSON.stringify(gameData))
   localStorage.setItem("tendencySaveUnlockTabs", JSON.stringify(unlockedTabs))
+  localStorage.setItem("tendencySavePurchases", JSON.stringify(accoutrementsPurchases))
 }, 15000)
 
 var savegame = JSON.parse(localStorage.getItem("tendencySave"))
 var savegameTabs = JSON.parse(localStorage.getItem("tendencySaveUnlockTabs"))
+var savegamePurchases = JSON.parse(localStorage.getItem("tendencySavePurchases"))
 if (savegame !== null) {
   gameData = savegame
 }
 if (savegameTabs !== null) {
   unlockedTabs = savegameTabs
 }
+if (savegamePurchases !== null) {
+  accoutrementsPurchases = savegamePurchases
+}
 
 function fullReset() {
   //Dirty way to clone values without setting as a reference
   gameData = JSON.parse(JSON.stringify(defaultGameData))
   //reset unlocked tabs as well
-  unlockedTabs.mundane = false;
-  unlockedTabs.mundaneLeisure = false;
-  unlockedTabs.occult = false;
+  unlockedTabs = JSON.parse(JSON.stringify(defaultUnlockedTabs))
+  accoutrementsPurchases = JSON.parse(JSON.stringify(defaultAccoutrementsPurchases))
   //hide tabs not unlocked
   document.getElementById("defaultOpen").click();
   document.getElementById("occultTabButton").style.display="none"
   document.getElementById("regularMundaneWrapper").style.display="none"
   document.getElementById("relaxation").style.display="none"
   document.getElementById("initialStateWrapper").style.display="inline"
+  document.getElementById("radioBuyButton").style.display="inline"
   clearAllText()
 }
 
@@ -93,6 +114,7 @@ function openTab(event, tabName) {
 function updateDisplayValues() {
   //MUNDANE TAB
   document.getElementById("wageText").innerHTML = "Wage: $" + gameData.wage
+  document.getElementById("relaxationText").innerHTML = "Relaxation: " + gameData.relaxation
   document.getElementById("finances").innerHTML = "Finances: $" + gameData.finances
   document.getElementById("stress").innerHTML = "Stress: " + gameData.stressTotal
   document.getElementById("daysRemainingSpan").innerHTML = gameData.daysToBill
@@ -101,4 +123,14 @@ function updateDisplayValues() {
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 
   + gameData.vimPerClick + " (" + gameData.vimPerClickCost + " Vim)"
   document.getElementById("vigorGained").innerHTML = gameData.vigor + " VIGOR"
+  
+  displayAccoutrements()
+}
+
+function displayAccoutrements() {
+  let str = "Accoutrements: "
+  if (accoutrementsPurchases.radio) {
+    str += "Radio"
+  }
+  document.getElementById("accoutrementsList").innerHTML = str
 }

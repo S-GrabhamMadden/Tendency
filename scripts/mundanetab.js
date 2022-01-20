@@ -10,6 +10,18 @@ function unlockMundane() {
   addMessage("Little room for flights of fancy. For now, drudgery or destitution.")
 }
 
+//Accoutrements purchases
+function buyRadio() {
+  if (gameData.finances >= 20) {
+    gameData.finances -= 20
+    accoutrementsPurchases.radio = true
+    gameData.relaxation += 1
+    document.getElementById("radioBuyButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
+//Day activities
 function mundaneWork() {
   gameData.finances += gameData.wage
   gameData.stressTotal += gameData.workStressGain
