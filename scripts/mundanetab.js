@@ -7,5 +7,5 @@ function unlockMundane() {
   unlockedTabs.mundane = true;
   document.getElementById("initialStateWrapper").style.display="none"
   document.getElementById("regularMundaneWrapper").style.display="inline"
-  addMessage("Little room for flights of fancy. For now, drudgery.")
+  addMessage("Little room for flights of fancy. For now, drudgery or destitution.")
 }
