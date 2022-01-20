@@ -1,4 +1,11 @@
 var defaultGameData = {
+  finances: 0,
+  wage: 8,
+  bills: 100,
+  stress: 0,
+  relaxation: 1,
+  education: 0,
+  study: 1,
   vim: 0,
   vimPerClick: 1,
   vimPerClickCost: 10,
@@ -9,6 +16,13 @@ var defaultGameData = {
 }
 
 var gameData = {
+  finances: 0,
+  wage: 8,
+  bills: 100,
+  stress: 0,
+  relaxation: 1,
+  education: 0,
+  study: 1,
   vim: 0,
   vimPerClick: 1,
   vimPerClickCost: 10,
@@ -69,6 +83,10 @@ function openTab(event, tabName) {
 }
 
 function updateDisplayValues() {
+  //MUNDANE TAB
+  document.getElementById("wages").innerHTML = "<button class=\"DayButton\" onclick=\"mundaneWork()\">Work</button> Wage: $" + gameData.wage
+  document.getElementById("finances").innerHTML = "Finances: $" + gameData.finances
+  //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 
   + gameData.vimPerClick + " (" + gameData.vimPerClickCost + " Vim)"

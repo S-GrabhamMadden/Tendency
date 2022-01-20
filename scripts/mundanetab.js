@@ -9,3 +9,10 @@ function unlockMundane() {
   document.getElementById("regularMundaneWrapper").style.display="inline"
   addMessage("Little room for flights of fancy. For now, drudgery or destitution.")
 }
+
+function mundaneWork() {
+  gameData.finances += gameData.wage
+  updateDisplayValues()
+  
+  
+}
