@@ -89,6 +89,8 @@ function checkUnlocks() {
   if (gameData.job == 0 && gameData.workClicks >= 28) {
     gameData.job = 1
     gameData.wage = 9
+    gameData.stressTotal -= 10
+    if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
     addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He warns that further raises will not be forthcoming.")
     updateDisplayValues()
   }
