@@ -21,6 +21,16 @@ function buyRadio() {
   }
 }
 
+function buyFurniture() {
+  if (gameData.finances >= 60) {
+    gameData.finances -= 60
+    accoutrementsPurchases.furniture = true
+    gameData.relaxation += 1
+    document.getElementById("furnitureBuyButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
 //Day activities
 function mundaneWork() {
   gameData.finances += gameData.wage
@@ -70,5 +80,10 @@ function checkUnlocks() {
       document.getElementById("relaxation").style.display="inline"
       addMessage("\"All work and no play makes Jack a dull boy\", or something like that.")
     }
+  }
+  if (accoutrementsPurchases.radio && !accoutrementsPurchases.furnitureUnlock && gameData.finances >= 40) {
+    accoutrementsPurchases.furnitureUnlock = true;
+    document.getElementById("furnitureBuyButton").style.display="inline"
+    addMessage("Consider a more comfortable abode. Perhaps a couch with surviving stuffing, and a coffee table with four legs?")
   }
 }

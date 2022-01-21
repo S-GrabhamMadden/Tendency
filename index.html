@@ -46,7 +46,8 @@
               <p id="thingsOwned" class="ADayInfoLabels">Residence: Small Apartment<br>
               <span id="institution">Institution: Night Classes<br></span>
               <span id="accoutrementsList">Accoutrements: </span></p>
-              <p id="purchaseButtons" class="ADayInfoLabels"><button id="radioBuyButton" onclick="buyRadio()">Buy a Radio $20</button></p>
+              <p id="purchaseButtons" class="ADayInfoLabels"><button id="radioBuyButton" onclick="buyRadio()">Buy a Radio $20</button>
+              <button id="furnitureBuyButton" onclick="buyFurniture()">Buy Better Furniture $60</button></p>
             </div>
             
             <div id="debugUnlockOccult">
@@ -94,6 +95,8 @@
         document.getElementById("institution").style.display="none"
         document.getElementById("education").style.display="none"
       }
+      if (accoutrementsPurchases.radio) {document.getElementById("radioBuyButton").style.display="none"}
+      if (accoutrementsPurchases.furniture || !accoutrementsPurchases.furnitureUnlock) {document.getElementById("furnitureBuyButton").style.display="none"}
     </script>
   </body>
 </html>

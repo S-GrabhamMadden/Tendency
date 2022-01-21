@@ -55,11 +55,15 @@ var unlockedTabs = {
 }
 
 var defaultAccoutrementsPurchases = {
-  radio: false
+  radio: false,
+  furnitureUnlock: false,
+  furniture: false
 }
 
 var accoutrementsPurchases = {
-  radio: false
+  radio: false,
+  furnitureUnlock: false,
+  furniture: false
 }
 
 var saveGameLoop = window.setInterval(function() {
@@ -131,6 +135,9 @@ function displayAccoutrements() {
   let str = "Accoutrements: "
   if (accoutrementsPurchases.radio) {
     str += "Radio"
+  }
+  if (accoutrementsPurchases.furniture) {
+    str += ", Furniture"
   }
   document.getElementById("accoutrementsList").innerHTML = str
 }
