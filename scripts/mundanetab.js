@@ -86,4 +86,10 @@ function checkUnlocks() {
     document.getElementById("furnitureBuyButton").style.display="inline"
     addMessage("Consider a more comfortable abode. Perhaps a couch with surviving stuffing, and a coffee table with four legs?")
   }
+  if (gameData.job == 0 && gameData.workClicks >= 28) {
+    gameData.job = 1
+    gameData.wage = 9
+    addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He warns that further raises will not be forthcoming.")
+    updateDisplayValues()
+  }
 }
