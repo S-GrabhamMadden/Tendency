@@ -91,7 +91,17 @@ function processDay() {
     }, 500);
   });
   checkUnlocks();
+  checkStress()
   updateDisplayValues()
+}
+
+function checkStress() {
+  if (gameData.stressTotal >= 50) {
+    document.getElementById("stress").style.color = "red"
+  }
+  else {
+    document.getElementById("stress").style.color = "black"
+  }
 }
 
 function billsDue() {
