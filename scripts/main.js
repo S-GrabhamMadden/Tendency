@@ -130,6 +130,8 @@ function updateDisplayValues() {
   document.getElementById("finances").innerHTML = "Finances: $" + gameData.finances
   document.getElementById("stress").innerHTML = "Stress: " + gameData.stressTotal
   document.getElementById("daysRemainingSpan").innerHTML = gameData.daysToBill
+  document.getElementById("studyText").innerHTML = "Study: " + gameData.study
+  document.getElementById("education").innerHTML = "Education: " + gameData.education
   //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 

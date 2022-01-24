@@ -62,6 +62,12 @@ function mundaneLeisure() {
   processDay()
 }
 
+function mundaneClasses() {
+  gameData.education += gameData.study
+  gameData.stressTotal += 1
+  processDay()
+}
+
 function processDay() {
   gameData.daysToBill -= 1
   if (gameData.daysToBill == 0) {
