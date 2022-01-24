@@ -106,6 +106,7 @@ function fullReset() {
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
+  document.getElementById("operatorJobButton").style.display="none"
   clearAllText()
 }
 

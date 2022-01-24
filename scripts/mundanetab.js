@@ -43,6 +43,15 @@ function buyNightClasses() {
   }
 }
 
+function getOperatorJob() {
+  if (gameData.education >= 10) {
+    gameData.job = 2
+    gameData.wage = 15
+    document.getElementById("operatorJobButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
 //Day activities
 function mundaneWork() {
   gameData.finances += gameData.wage
@@ -113,5 +122,9 @@ function checkUnlocks() {
     accoutrementsPurchases.nightClassesUnlock = true
     document.getElementById("nightclassBuyButton").style.display="inline"
     updateDisplayValues()
+  }
+  if (gameData.job == 1 && gameData.education == 5) {
+    document.getElementById("operatorJobButton").style.display="inline"
+    addMessage("An opportunity arrives - switchboard operators aren't prestigious, but they are paid.")
   }
 }
