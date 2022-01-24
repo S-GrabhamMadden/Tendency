@@ -61,7 +61,7 @@ function processDay() {
     b.disabled = true;
     setTimeout(function() {
         b.disabled = false;
-    }, 1000);
+    }, 500);
   });
   checkUnlocks();
   updateDisplayValues()
