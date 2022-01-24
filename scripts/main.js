@@ -60,6 +60,8 @@ var defaultAccoutrementsPurchases = {
   radio: false,
   furnitureUnlock: false,
   furniture: false,
+  bwTVUnlock: false,
+  bwTV: false,
   nightClassesUnlock: false
 }
 
@@ -67,6 +69,8 @@ var accoutrementsPurchases = {
   radio: false,
   furnitureUnlock: false,
   furniture: false,
+  bwTVUnlock: false,
+  bwTV: false,
   nightClassesUnlock: false
 }
 
@@ -103,6 +107,7 @@ function fullReset() {
   document.getElementById("initialStateWrapper").style.display="inline"
   document.getElementById("radioBuyButton").style.display="inline"
   document.getElementById("furnitureBuyButton").style.display="none"
+  document.getElementById("bwTVBuyButton").style.display="none"
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
@@ -144,11 +149,20 @@ function updateDisplayValues() {
 
 function displayAccoutrements() {
   let str = "Accoutrements: "
+  let count = 0
   if (accoutrementsPurchases.radio) {
+    count+=1
     str += "Radio"
   }
   if (accoutrementsPurchases.furniture) {
-    str += ", Furniture"
+    if (count > 0) {str += ", "}
+    count+=1
+    str += "Furniture"
+  }
+  if (accoutrementsPurchases.bwTV) {
+    if (count > 0) {str += ", "}
+    count+=1
+    str += "Television"
   }
   document.getElementById("accoutrementsList").innerHTML = str
 }

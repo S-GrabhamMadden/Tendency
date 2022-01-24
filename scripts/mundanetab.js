@@ -31,6 +31,16 @@ function buyFurniture() {
   }
 }
 
+function buybwTV() {
+  if (gameData.finances >= 150) {
+    gameData.finances -= 150
+    accoutrementsPurchases.bwTV = true
+    gameData.relaxation += 2
+    document.getElementById("bwTVBuyButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
 function buyNightClasses() {
   if (gameData.finances >= 80) {
     gameData.finances -= 80
@@ -47,6 +57,7 @@ function getOperatorJob() {
   if (gameData.education >= 10) {
     gameData.job = 2
     gameData.wage = 15
+    gameData.workClicks = 0
     document.getElementById("operatorJobButton").style.display="none"
     updateDisplayValues()
   }
@@ -122,6 +133,11 @@ function checkUnlocks() {
     accoutrementsPurchases.furnitureUnlock = true;
     document.getElementById("furnitureBuyButton").style.display="inline"
     addMessage("Consider a more comfortable abode. Perhaps a couch with surviving stuffing, and a coffee table with four legs?")
+  }
+  if (!accoutrementsPurchases.bwTVUnlock && gameData.finances >= 100) {
+    accoutrementsPurchases.bwTVUnlock = true;
+    document.getElementById("bwTVBuyButton").style.display="inline"
+    addMessage("Sixteen inches of black and white beauty, so close to being yours.")
   }
   if (gameData.job == 0 && gameData.workClicks >= 28) {
     gameData.job = 1
