@@ -31,6 +31,18 @@ function buyFurniture() {
   }
 }
 
+function buyNightClasses() {
+  if (gameData.finances >= 80) {
+    gameData.finances -= 80
+    document.getElementById("study").style.display="block"
+    document.getElementById("institution").style.display="inline"
+    document.getElementById("education").style.display="inline"
+    document.getElementById("nightclassBuyButton").style.display="none"
+    unlockedTabs.mundaneClasses = true
+    updateDisplayValues()
+  }
+}
+
 //Day activities
 function mundaneWork() {
   gameData.finances += gameData.wage
@@ -81,7 +93,7 @@ function checkUnlocks() {
       addMessage("\"All work and no play makes Jack a dull boy\", or something like that.")
     }
   }
-  if (accoutrementsPurchases.radio && !accoutrementsPurchases.furnitureUnlock && gameData.finances >= 40) {
+  if (!accoutrementsPurchases.furnitureUnlock && gameData.finances >= 60) {
     accoutrementsPurchases.furnitureUnlock = true;
     document.getElementById("furnitureBuyButton").style.display="inline"
     addMessage("Consider a more comfortable abode. Perhaps a couch with surviving stuffing, and a coffee table with four legs?")
@@ -91,7 +103,9 @@ function checkUnlocks() {
     gameData.wage = 9
     gameData.stressTotal -= 10
     if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
-    addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He warns that further raises will not be forthcoming.")
+    addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He grumbles that further raises will not be forthcoming. You'll have to make your own opportunities.")
+    accoutrementsPurchases.nightClassesUnlock = true
+    document.getElementById("nightclassBuyButton").style.display="inline"
     updateDisplayValues()
   }
 }

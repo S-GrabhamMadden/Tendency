@@ -59,13 +59,15 @@ var unlockedTabs = {
 var defaultAccoutrementsPurchases = {
   radio: false,
   furnitureUnlock: false,
-  furniture: false
+  furniture: false,
+  nightClassesUnlock: false
 }
 
 var accoutrementsPurchases = {
   radio: false,
   furnitureUnlock: false,
-  furniture: false
+  furniture: false,
+  nightClassesUnlock: false
 }
 
 var saveGameLoop = window.setInterval(function() {
@@ -100,6 +102,10 @@ function fullReset() {
   document.getElementById("relaxation").style.display="none"
   document.getElementById("initialStateWrapper").style.display="inline"
   document.getElementById("radioBuyButton").style.display="inline"
+  document.getElementById("furnitureBuyButton").style.display="none"
+  document.getElementById("study").style.display="none"
+  document.getElementById("institution").style.display="none"
+  document.getElementById("education").style.display="none"
   clearAllText()
 }
 
