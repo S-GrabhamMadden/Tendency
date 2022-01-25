@@ -69,7 +69,7 @@ function mundaneWork() {
   gameData.stressTotal += gameData.workStressGain
   processDay()
   gameData.workClicks+=1;
-  if (gameData.workClicks == 1) {
+  if (gameData.workClicks == 1 && gameData.job == 0) {
     addMessage("Another eight hours lost, another eight dollars gained.")
   }
 }

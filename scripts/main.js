@@ -112,6 +112,8 @@ function fullReset() {
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
   document.getElementById("operatorJobButton").style.display="none"
+  //reset styling changes if any
+  document.getElementById("stress").style.color = "black"
   clearAllText()
 }
 
