@@ -75,6 +75,16 @@ function buyNightClasses() {
   }
 }
 
+function buyCommunityCollege() {
+  if (gameData.finances >= 300 && gameData.education >= 30) {
+    gameData.finances -= 300
+    gameData.study += 1
+    document.getElementById("communitycollegeBuyButton").style.display="none"
+    accoutrementsPurchases.communityCollege = true
+    updateDisplayValues()
+  }
+}
+
 function getOperatorJob() {
   if (gameData.education >= 10) {
     gameData.job = 2
@@ -179,6 +189,12 @@ function checkUnlocks() {
     addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He grumbles that further raises will not be forthcoming. You'll have to make your own opportunities.")
     accoutrementsPurchases.nightClassesUnlock = true
     document.getElementById("nightclassBuyButton").style.display="inline"
+    updateDisplayValues()
+  }
+  if (gameData.education == 15) {
+    accoutrementsPurchases.communityCollegeUnlock = true
+    addMessage("This place was a good start for expanding the walls of your mind, but as you grow it will come to stifle you. Find greater opportunities, greater capacity for greater knowledge.")
+    document.getElementById("communitycollegeBuyButton").style.display="inline"
     updateDisplayValues()
   }
   if (gameData.job == 1 && gameData.education == 5) {

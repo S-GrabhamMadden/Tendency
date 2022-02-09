@@ -66,7 +66,9 @@ var defaultAccoutrementsPurchases = {
   cTV: false,
   fordFairlaneUnlock: false,
   fordFairlane: false,
-  nightClassesUnlock: false
+  nightClassesUnlock: false,
+  communityCollege: false,
+  communityCollegeUnlock: false
 }
 
 var accoutrementsPurchases = {
@@ -79,7 +81,9 @@ var accoutrementsPurchases = {
   cTV: false,
   fordFairlaneUnlock: false,
   fordFairlane: false,
-  nightClassesUnlock: false
+  nightClassesUnlock: false,
+  communityCollege: false,
+  communityCollegeUnlock: false
 }
 
 var saveGameLoop = window.setInterval(function() {
@@ -180,4 +184,7 @@ function displayAccoutrements() {
     str += "Transport: Ford Fairlane"
   }
   document.getElementById("accoutrementsList").innerHTML = str
+  if (accoutrementsPurchases.communityCollege) {
+    document.getElementById("institution").innerHTML = "Institution: Community College<br>"
+  }
 }

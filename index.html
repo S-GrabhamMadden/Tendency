@@ -53,7 +53,8 @@
               <button id="bwTVBuyButton" class="unlockableAccoutrementsButton" onclick="buybwTV()">Buy a Television $150</button>
               <button id="cTVBuyButton" class="unlockableAccoutrementsButton" onclick="buycTV()">Upgrade to a Color Television $930</button>
               <button id="FordFairlaneBuyButton" class="unlockableAccoutrementsButton" onclick="buyFord()">Buy a Ford Fairlane $2,345</button>
-              <button id="nightclassBuyButton" class="unlockableAccoutrementsButton" onclick="buyNightClasses()">Enroll in Night Classes $80</button></p>
+              <button id="nightclassBuyButton" class="unlockableAccoutrementsButton" onclick="buyNightClasses()">Enroll in Night Classes $80</button>
+              <button id="communitycollegeBuyButton" class="unlockableAccoutrementsButton" onclick="buyCommunityCollege()">Enroll in Community College $300 (30 Education)</button></p>
             </div>
             
             <div id="debugUnlockOccult">
@@ -107,6 +108,7 @@
       if (accoutrementsPurchases.cTV || !accoutrementsPurchases.cTVUnlock) {document.getElementById("cTVBuyButton").style.display="none"}
       if (accoutrementsPurchases.fordFairlane || !accoutrementsPurchases.fordFairlaneUnlock) {document.getElementById("FordFairlaneBuyButton").style.display="none"}
       if (unlockedTabs.mundaneClasses || !accoutrementsPurchases.nightClassesUnlock) {document.getElementById("nightclassBuyButton").style.display="none"}
+      if (accoutrementsPurchases.communityCollege || !accoutrementsPurchases.communityCollegeUnlock) {document.getElementById("communitycollegeBuyButton").style.display="none"}
       if (gameData.job > 1 || gameData.education < 5) {
         document.getElementById("operatorJobButton").style.display="none"
       }
