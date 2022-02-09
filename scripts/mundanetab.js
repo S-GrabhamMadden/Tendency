@@ -41,6 +41,18 @@ function buybwTV() {
   }
 }
 
+function buyFord() {
+  if (gameData.finances >= 2345) {
+    gameData.finances -= 2345
+    gameData.bills += 15 
+    accoutrementsPurchases.fordFairlane = true
+    gameData.workStressGain = 1
+    document.getElementById("FordFairlaneBuyButton").style.display="none"
+    addMessage("Beyond the matter of pride, itself important, having a vehicle will make travel much more convenient.")
+    updateDisplayValues()
+  }
+}
+
 function buyNightClasses() {
   if (gameData.finances >= 80) {
     gameData.finances -= 80
@@ -138,6 +150,11 @@ function checkUnlocks() {
     accoutrementsPurchases.bwTVUnlock = true;
     document.getElementById("bwTVBuyButton").style.display="inline"
     addMessage("Sixteen inches of black and white beauty, so close to being yours.")
+  }
+  if (!accoutrementsPurchases.fordFairlaneUnlock && gameData.finances >= 300) {
+    accoutrementsPurchases.fordFairlaneUnlock = true;
+    document.getElementById("FordFairlaneBuyButton").style.display="inline"
+    addMessage("One's own automobile is quintissential to the American Dream. You're not quite dreaming yet, but perhaps someday soon.")
   }
   if (gameData.job == 0 && gameData.workClicks >= 28) {
     gameData.job = 1

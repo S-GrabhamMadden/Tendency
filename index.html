@@ -51,6 +51,7 @@
               <p id="purchaseButtons" class="ADayInfoLabels"><button id="radioBuyButton" onclick="buyRadio()">Buy a Radio $20</button>
               <button id="furnitureBuyButton" onclick="buyFurniture()">Buy Better Furniture $60</button>
               <button id="bwTVBuyButton" onclick="buybwTV()">Buy a Television $150</button>
+              <button id="FordFairlaneBuyButton" onclick="buyFord()">Buy a Ford Fairlane $2,345</button>
               <button id="nightclassBuyButton" onclick="buyNightClasses()">Enroll in Night Classes $80</button></p>
             </div>
             
@@ -102,6 +103,7 @@
       if (accoutrementsPurchases.radio) {document.getElementById("radioBuyButton").style.display="none"}
       if (accoutrementsPurchases.furniture || !accoutrementsPurchases.furnitureUnlock) {document.getElementById("furnitureBuyButton").style.display="none"}
       if (accoutrementsPurchases.bwTV || !accoutrementsPurchases.bwTVUnlock) {document.getElementById("bwTVBuyButton").style.display="none"}
+      if (accoutrementsPurchases.fordFairlane || !accoutrementsPurchases.fordFairlaneUnlock) {document.getElementById("FordFairlaneBuyButton").style.display="none"}
       if (unlockedTabs.mundaneClasses || !accoutrementsPurchases.nightClassesUnlock) {document.getElementById("nightclassBuyButton").style.display="none"}
       if (gameData.job > 1 || gameData.education < 5) {
         document.getElementById("operatorJobButton").style.display="none"

@@ -62,6 +62,8 @@ var defaultAccoutrementsPurchases = {
   furniture: false,
   bwTVUnlock: false,
   bwTV: false,
+  fordFairlaneUnlock: false,
+  fordFairlane: false,
   nightClassesUnlock: false
 }
 
@@ -71,6 +73,8 @@ var accoutrementsPurchases = {
   furniture: false,
   bwTVUnlock: false,
   bwTV: false,
+  fordFairlaneUnlock: false,
+  fordFairlane: false,
   nightClassesUnlock: false
 }
 
@@ -108,6 +112,7 @@ function fullReset() {
   document.getElementById("radioBuyButton").style.display="inline"
   document.getElementById("furnitureBuyButton").style.display="none"
   document.getElementById("bwTVBuyButton").style.display="none"
+  document.getElementById("FordFairlaneBuyButton").style.display="none"
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
@@ -165,6 +170,11 @@ function displayAccoutrements() {
     if (count > 0) {str += ", "}
     count+=1
     str += "Television"
+  }
+  if (accoutrementsPurchases.fordFairlane) {
+    if (count > 0) {str += "<br>"}
+    count+=1
+    str += "Transport: Ford Fairlane"
   }
   document.getElementById("accoutrementsList").innerHTML = str
 }
