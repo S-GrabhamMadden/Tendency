@@ -110,9 +110,8 @@ function fullReset() {
   document.getElementById("relaxation").style.display="none"
   document.getElementById("initialStateWrapper").style.display="inline"
   document.getElementById("radioBuyButton").style.display="inline"
-  document.getElementById("furnitureBuyButton").style.display="none"
-  document.getElementById("bwTVBuyButton").style.display="none"
-  document.getElementById("FordFairlaneBuyButton").style.display="none"
+  hidebuttons = document.getElementsByClassName("unlockableAccoutrementsButton");
+  for (i = 0; i < hidebuttons.length; i++) {hidebuttons[i].style.display="none"}
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
