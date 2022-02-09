@@ -41,6 +41,16 @@ function buybwTV() {
   }
 }
 
+function buycTV() {
+  if (gameData.finances >= 930) {
+    gameData.finances -= 930
+    accoutrementsPurchases.cTV = true
+    gameData.relaxation += 1
+    document.getElementById("cTVBuyButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
 function buyFord() {
   if (gameData.finances >= 2345) {
     gameData.finances -= 2345
@@ -151,7 +161,12 @@ function checkUnlocks() {
     document.getElementById("bwTVBuyButton").style.display="inline"
     addMessage("Sixteen inches of black and white beauty, so close to being yours.")
   }
-  if (!accoutrementsPurchases.fordFairlaneUnlock && gameData.finances >= 300) {
+  if (!accoutrementsPurchases.cTVUnlock && accoutrementsPurchases.bwTV && gameData.finances >= 300) {
+    accoutrementsPurchases.cTVUnlock = true;
+    document.getElementById("cTVBuyButton").style.display="inline"
+    addMessage("Our windows into the world grow more advanced. Now, we have unlocked the chromatic. Perhaps one day even more realism will be possible.")
+  }
+  if (!accoutrementsPurchases.fordFairlaneUnlock && gameData.finances >= 500) {
     accoutrementsPurchases.fordFairlaneUnlock = true;
     document.getElementById("FordFairlaneBuyButton").style.display="inline"
     addMessage("One's own automobile is quintissential to the American Dream. You're not quite dreaming yet, but perhaps someday soon.")

@@ -62,6 +62,8 @@ var defaultAccoutrementsPurchases = {
   furniture: false,
   bwTVUnlock: false,
   bwTV: false,
+  cTVUnlock: false,
+  cTV: false,
   fordFairlaneUnlock: false,
   fordFairlane: false,
   nightClassesUnlock: false
@@ -73,6 +75,8 @@ var accoutrementsPurchases = {
   furniture: false,
   bwTVUnlock: false,
   bwTV: false,
+  cTVUnlock: false,
+  cTV: false,
   fordFairlaneUnlock: false,
   fordFairlane: false,
   nightClassesUnlock: false
