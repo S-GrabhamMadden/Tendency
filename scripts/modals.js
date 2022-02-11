@@ -3,7 +3,7 @@ function makePopup(title, text, options = []) {
   modalDiv.className = title
   modalDiv.innerHTML = 
   "<div class=\"modal\">\n" +
-    "<div class=\"modal-content\">\n" +
+    "<div id=\"modalcontent\" class=\"modal-content\">\n" +
       "<span class=\"close\">&times;</span>\n" +
       "<h3>"+title+"</h3>\n" +
       "<p>"+text+"</p>\n" +
