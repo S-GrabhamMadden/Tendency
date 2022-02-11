@@ -1,6 +1,6 @@
-function makePopup(title, text, options = []) {
+function makePopup(title, text) {
   const modalDiv = document.createElement('div');
-  modalDiv.className = title
+  modalDiv.className = "modalClass"
   modalDiv.innerHTML = 
   "<div class=\"modal\">\n" +
     "<div id=\"modalcontent\" class=\"modal-content\">\n" +
@@ -14,9 +14,23 @@ function makePopup(title, text, options = []) {
   
   var closeX = document.getElementsByClassName("close")[0]
   closeX.onclick = function() {
-    var modals = document.getElementsByClassName(title)
+    var modals = document.getElementsByClassName("modalClass")
     Array.from(modals).forEach((modal) => {
       modal.remove()
     });
   }
+}
+
+function closeModals() {
+  var modals = document.getElementsByClassName("modalClass")
+  Array.from(modals).forEach((modal) => {
+    modal.remove()
+  });
+}
+
+function addPopupOption(buttonText, tooltipText="", functionName="closeModals()") {
+  const buttonDiv = document.createElement('div');
+  buttonDiv.className = "tooltip"
+  buttonDiv.innerHTML = "<button onclick=\"" + functionName +"\">" + buttonText + "</button><span class=\"tooltiptext\">" + tooltipText + "</span>"
+  document.getElementById("modalcontent").append(buttonDiv);
 }

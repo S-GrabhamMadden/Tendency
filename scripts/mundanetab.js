@@ -201,4 +201,18 @@ function checkUnlocks() {
     document.getElementById("operatorJobButton").style.display="inline"
     addMessage("An opportunity arrives - switchboard operators aren't prestigious, but they are paid.")
   }
+  if (gameData.job == 2 && gameData.workClicks == 28) {
+    gameData.workClicks = 0
+    makePopup("More Duties?", "You've been offered the opportunity to take operating responsibilities for a larger calling area. It would mean a raise, but the adjustment will be non-trivial.")
+    addPopupOption("Accept More Responsibility","Wage +$1, Stress +15","acceptMoreResponsibility()")
+    addPopupOption("Politely Decline","No Change")
+  }
+}
+
+//Modal button functions
+function acceptMoreResponsibility() {
+  gameData.stressTotal += 15
+  gameData.wage += 1
+  closeModals()
+  updateDisplayValues()
 }
