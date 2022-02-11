@@ -187,4 +187,7 @@ function displayAccoutrements() {
   if (accoutrementsPurchases.communityCollege) {
     document.getElementById("institution").innerHTML = "Institution: Community College<br>"
   }
+  if (gameData.job == 2) {
+    document.getElementById("Employment").innerHTML = "Employment: Telephone Operator<br>"
+  }
 }
