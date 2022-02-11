@@ -95,6 +95,16 @@ function getOperatorJob() {
   }
 }
 
+function getAccountingJob() {
+  if (gameData.education >= 50) {
+    gameData.job = 3
+    gameData.wage = 22
+    gameData.workClicks = 0
+    document.getElementById("accountingJobButton").style.display="none"
+    updateDisplayValues()
+  }
+}
+
 //Day activities
 function mundaneWork() {
   gameData.finances += gameData.wage
@@ -197,9 +207,14 @@ function checkUnlocks() {
     document.getElementById("communitycollegeBuyButton").style.display="inline"
     updateDisplayValues()
   }
-  if (gameData.job == 1 && gameData.education == 5) {
+  if (gameData.job == 1 && gameData.education == 5 && document.getElementById("operatorJobButton").style.display == "none") {
     document.getElementById("operatorJobButton").style.display="inline"
     addMessage("An opportunity arrives - switchboard operators aren't prestigious, but they are paid.")
+  }
+  if (gameData.job < 3 && gameData.education == 30 && document.getElementById("accountingJobButton").style.display == "none") {
+    accJobDisplay = true
+    document.getElementById("accountingJobButton").style.display="inline"
+    addMessage("Amidst suits and smoky offices, a bright future awaits those who might seize it.")
   }
   if (gameData.job == 2 && gameData.workClicks == 28) {
     gameData.workClicks = 0

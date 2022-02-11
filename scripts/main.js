@@ -124,6 +124,7 @@ function fullReset() {
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
   document.getElementById("operatorJobButton").style.display="none"
+  document.getElementById("accountingJobButton").style.display="none"
   //reset styling changes if any
   document.getElementById("stress").style.color = "black"
   clearAllText()
@@ -187,7 +188,6 @@ function displayAccoutrements() {
   if (accoutrementsPurchases.communityCollege) {
     document.getElementById("institution").innerHTML = "Institution: Community College<br>"
   }
-  if (gameData.job == 2) {
-    document.getElementById("Employment").innerHTML = "Employment: Telephone Operator<br>"
-  }
+  if (gameData.job == 2) {document.getElementById("Employment").innerHTML = "Employment: Telephone Operator<br>"}
+  if (gameData.job == 3) {document.getElementById("Employment").innerHTML = "Employment: Junior Accountant<br>"}
 }
