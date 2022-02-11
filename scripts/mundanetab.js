@@ -17,7 +17,6 @@ function buyRadio() {
     accoutrementsPurchases.radio = true
     gameData.relaxation += 1
     document.getElementById("radioBuyButton").style.display="none"
-    makePopup("Test","This is a test of the modal popups.")
     updateDisplayValues()
   }
 }
