@@ -140,17 +140,23 @@ function processDay() {
   Array.from(buttons).forEach((b) => {
     b.disabled = true;
     setTimeout(function() {
-        b.disabled = false;
+        if (b.id == "leisureButton" || gameData.stressTotal < 100) {
+          b.disabled = false;
+        }
     }, 500);
   });
   checkUnlocks();
   checkStress()
+  randomEvents()
   updateDisplayValues()
 }
 
 function checkStress() {
-  if (gameData.stressTotal >= 50) {
+  if (gameData.stressTotal >= 100) {
     document.getElementById("stress").style.color = "red"
+  }
+  else if (gameData.stressTotal >= 50) {
+    document.getElementById("stress").style.color = "orange"
   }
   else {
     document.getElementById("stress").style.color = "black"
@@ -196,8 +202,6 @@ function checkUnlocks() {
     addPopupOption("So Be It","Education Unlocked")
     gameData.job = 1
     gameData.wage = 9
-    gameData.stressTotal -= 10
-    if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
     accoutrementsPurchases.nightClassesUnlock = true
     document.getElementById("nightclassBuyButton").style.display="inline"
     updateDisplayValues()
@@ -228,6 +232,14 @@ function checkUnlocks() {
     makePopup("Noticed Upstairs", "Mr. Melton seems to have taken note of your work ethic, as well as your qualifications. His interest shines down like a blessing. You find a memo on your desk this morning with the details of several of the company's larger accounts, if you would be so kind as to take over their management.")
     addPopupOption("Graciously Accept","Wage +$4, Stress +15","acceptMoreResponsibility(4, 15)")
     addPopupOption("Politely Decline","No Change")
+  }
+}
+
+function randomEvents() {
+  var modals = document.getElementsByClassName("modalClass")
+  //Only check whether to pop a random event if there isn't already a modal today
+  if (modals.length == 0) {
+    
   }
 }
 
