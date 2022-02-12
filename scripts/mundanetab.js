@@ -193,7 +193,7 @@ function checkUnlocks() {
   }
   if (gameData.job == 0 && gameData.workClicks >= 28) {
     makePopup("A Dead End","Your trial period at the grocery store finally ends and your gruff manager elevates you a pittance beyond the minimum wage. He grumbles that further raises will not be forthcoming. You'll have to make your own opportunities.")
-    addPopupOption("So I Shall","Education Unlocked")
+    addPopupOption("So Be It","Education Unlocked")
     gameData.job = 1
     gameData.wage = 9
     gameData.stressTotal -= 10
@@ -217,18 +217,24 @@ function checkUnlocks() {
     document.getElementById("accountingJobButton").style.display="inline"
     addMessage("Amidst suits and smoky offices, a bright future awaits those who might seize it.")
   }
-  if (gameData.job == 2 && gameData.workClicks == 28) {
+  if (gameData.job == 2 && gameData.workClicks == 28 && gameData.wage < 20) {
     gameData.workClicks = 0
     makePopup("More Duties?", "You've been offered the opportunity to take operating responsibilities for a larger calling area. It would mean a raise, but the adjustment will be non-trivial.")
-    addPopupOption("Accept More Responsibility","Wage +$1, Stress +15","acceptMoreResponsibility()")
+    addPopupOption("Accept More Responsibility","Wage +$1, Stress +15","acceptMoreResponsibility(1,15)")
+    addPopupOption("Politely Decline","No Change")
+  }
+  if (gameData.job == 3 && gameData.education >= 80 && gameData.workClicks >= 28 && gameData.wage < 26) {
+    gameData.workClicks = 0
+    makePopup("Noticed Upstairs", "Mr. Melton seems to have taken note of your work ethic, as well as your qualifications. His interest shines down like a blessing. You find a memo on your desk this morning with the details of several of the company's larger accounts, if you would be so kind as to take over their management.")
+    addPopupOption("Graciously Accept","Wage +$4, Stress +15","acceptMoreResponsibility(4, 15)")
     addPopupOption("Politely Decline","No Change")
   }
 }
 
 //Modal button functions
-function acceptMoreResponsibility() {
-  gameData.stressTotal += 15
-  gameData.wage += 1
+function acceptMoreResponsibility(wageAdd, stressAdd) {
+  gameData.stressTotal += stressAdd
+  gameData.wage += wageAdd
   closeModals()
   updateDisplayValues()
 }
