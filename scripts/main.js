@@ -191,3 +191,10 @@ function displayAccoutrements() {
   if (gameData.job == 2) {document.getElementById("Employment").innerHTML = "Employment: Telephone Operator<br>"}
   if (gameData.job == 3) {document.getElementById("Employment").innerHTML = "Employment: Junior Accountant<br>"}
 }
+
+//UTILITY
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random()*(max-min+1)+min)
+}

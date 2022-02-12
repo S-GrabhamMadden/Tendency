@@ -239,14 +239,44 @@ function randomEvents() {
   var modals = document.getElementsByClassName("modalClass")
   //Only check whether to pop a random event if there isn't already a modal today
   if (modals.length == 0) {
-    
+    //1 in 10 chance that an event actually happens
+    if (getRandomIntInclusive(1,10) == 10) {
+      var eventNumber = getRandomIntInclusive(1,2)
+      if (eventNumber == 1) {beggarRandomEvent()}
+      else if (eventNumber == 2) {niceWeatherRandomEvent()}
+    }
   }
+}
+
+//RANDOM EVENT FUNCTIONS
+function beggarRandomEvent() {
+  makePopup("Accosted by a Beggar", "Going about your business, you find your path blocked by a particularly disorderly gentleman begging for money. He insists that it is very important.")
+  addPopupOption("Pass Him Some Coins","-$5","spendMoney(5)")
+  addPopupOption("Ignore Him","+2 Stress","gainStress(2)")
+}
+
+function niceWeatherRandomEvent() {
+  makePopup("A Nice Day", "Often, it seems as though our society is simply too busy to allow its drones to appreciate the \"little things\". Today the sun is shining, and somewhere in the distance birds sing. Perhaps, today, there is time.")
+  addPopupOption("How Lovely...","-5 Stress","gainStress(-5)")
 }
 
 //Modal button functions
 function acceptMoreResponsibility(wageAdd, stressAdd) {
   gameData.stressTotal += stressAdd
   gameData.wage += wageAdd
+  closeModals()
+  updateDisplayValues()
+}
+
+function spendMoney(cost) {
+  gameData.finances -= cost
+  closeModals()
+  updateDisplayValues()
+}
+
+function gainStress(amount) {
+  gameData.stressTotal += amount
+  if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
   closeModals()
   updateDisplayValues()
 }
