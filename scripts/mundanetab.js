@@ -146,12 +146,12 @@ function processDay() {
     }, 500);
   });
   checkUnlocks();
-  checkStress()
+  checkAspects()
   randomEvents()
   updateDisplayValues()
 }
 
-function checkStress() {
+function checkAspects() {
   if (gameData.stressTotal >= 100) {
     document.getElementById("stress").style.color = "red"
   }
@@ -160,6 +160,19 @@ function checkStress() {
   }
   else {
     document.getElementById("stress").style.color = "black"
+  }
+  
+  if (gameData.finances < 0) {
+    document.getElementById("finances").style.color = "red"
+    if (!gameData.bankrupt) {
+      gameData.bankrupt = true
+      gameData.stressTotal += 10
+      addMessage("Going into debt to cover costs is never a pleasant experience.")
+    }
+  }
+  else {
+    gameData.bankrupt = false
+    document.getElementById("finances").style.color = "black"
   }
 }
 

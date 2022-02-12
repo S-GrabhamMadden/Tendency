@@ -1,5 +1,6 @@
 var defaultGameData = {
   finances: 0,
+  bankrupt: false,
   wage: 8,
   bills: 100,
   stressTotal: 0,
@@ -21,6 +22,7 @@ var defaultGameData = {
 
 var gameData = {
   finances: 0,
+  bankrupt: false,
   wage: 8,
   bills: 100,
   stressTotal: 0,
