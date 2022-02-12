@@ -192,11 +192,12 @@ function checkUnlocks() {
     addMessage("One's own automobile is quintissential to the American Dream. You're not quite dreaming yet, but perhaps someday soon.")
   }
   if (gameData.job == 0 && gameData.workClicks >= 28) {
+    makePopup("A Dead End","Your trial period at the grocery store finally ends and your gruff manager elevates you a pittance beyond the minimum wage. He grumbles that further raises will not be forthcoming. You'll have to make your own opportunities.")
+    addPopupOption("So I Shall","Education Unlocked")
     gameData.job = 1
     gameData.wage = 9
     gameData.stressTotal -= 10
     if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
-    addMessage("Your trial period ends and your manager elevates you a step beyond the minimum wage. He grumbles that further raises will not be forthcoming. You'll have to make your own opportunities.")
     accoutrementsPurchases.nightClassesUnlock = true
     document.getElementById("nightclassBuyButton").style.display="inline"
     updateDisplayValues()
