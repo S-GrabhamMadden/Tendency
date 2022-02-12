@@ -239,11 +239,14 @@ function randomEvents() {
   var modals = document.getElementsByClassName("modalClass")
   //Only check whether to pop a random event if there isn't already a modal today
   if (modals.length == 0) {
-    //1 in 10 chance that an event actually happens
-    if (getRandomIntInclusive(1,10) == 10) {
-      var eventNumber = getRandomIntInclusive(1,2)
+    //1 in 14 chance that an event actually happens
+    if (getRandomIntInclusive(1,20) == 20) {
+      var eventNumber = getRandomIntInclusive(1,4)
       if (eventNumber == 1) {beggarRandomEvent()}
       else if (eventNumber == 2) {niceWeatherRandomEvent()}
+      else if (eventNumber == 3) {findCashRandomEvent()}
+      else if (eventNumber == 4) {badDreamsRandomEvent()}
+      else if (eventNumber == 5) {goodDreamsRandomEvent()}
     }
   }
 }
@@ -251,13 +254,29 @@ function randomEvents() {
 //RANDOM EVENT FUNCTIONS
 function beggarRandomEvent() {
   makePopup("Accosted by a Beggar", "Going about your business, you find your path blocked by a particularly disorderly gentleman begging for money. He insists that it is very important.")
-  addPopupOption("Pass Him Some Coins","-$5","spendMoney(5)")
-  addPopupOption("Ignore Him","+2 Stress","gainStress(2)")
+  addPopupOption("Pass Him Some Coins","-$5","changeMoney(-5)")
+  addPopupOption("Ignore Him","+2 Stress","changeStress(2)")
 }
 
 function niceWeatherRandomEvent() {
   makePopup("A Nice Day", "Often, it seems as though our society is simply too busy to allow its drones to appreciate the \"little things\". Today the sun is shining, and somewhere in the distance birds sing. Perhaps, today, there is time.")
-  addPopupOption("How Lovely...","-5 Stress","gainStress(-5)")
+  addPopupOption("How Lovely...","-2 Stress","changeStress(-2)")
+}
+
+function findCashRandomEvent() {
+  makePopup("A Fortunate Find", "Today, evidently, is your day. While taking a lunchtime walk, lady luck displays a rare good mood - a $20 bill flutters by, unclaimed. Might it be yours?")
+  addPopupOption("Take The Bill","+$20","changeMoney(20)")
+  addPopupOption("Let it Fly Past","No Change")
+}
+
+function badDreamsRandomEvent() {
+  makePopup("Nightmares", "You've always been quite a vivid dreamer. Tonight, you wish you weren't. A chasing mass made of hands, brick walls into eternity. You wake in a cold sweat.")
+  addPopupOption("Terror","+5 Stress","changeStress(5)")
+}
+
+function goodDreamsRandomEvent() {
+  makePopup("Dreams of Power", "You've always been quite a vivid dreamer. Tonight, as you sleep, you wear a crown. Made of pearlescent bone, it fits you well, and comes accompanied with many other riches. Eventually, morning comes, but a fraction of the confidence remains.")
+  addPopupOption("Maybe One Day","-5 Stress","changeStress(-5)")
 }
 
 //Modal button functions
@@ -268,13 +287,13 @@ function acceptMoreResponsibility(wageAdd, stressAdd) {
   updateDisplayValues()
 }
 
-function spendMoney(cost) {
-  gameData.finances -= cost
+function changeMoney(amount) {
+  gameData.finances += amount
   closeModals()
   updateDisplayValues()
 }
 
-function gainStress(amount) {
+function changeStress(amount) {
   gameData.stressTotal += amount
   if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
   closeModals()

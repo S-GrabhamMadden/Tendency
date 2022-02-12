@@ -4,7 +4,7 @@ function makePopup(title, text) {
   modalDiv.innerHTML = 
   "<div class=\"modal\">\n" +
     "<div id=\"modalcontent\" class=\"modal-content\">\n" +
-      "<span class=\"close\">&times;</span>\n" +
+      //"<span class=\"close\">&times;</span>\n" +
       "<h3>"+title+"</h3>\n" +
       "<p>"+text+"</p>\n" +
     "</div>\n" +
@@ -12,13 +12,13 @@ function makePopup(title, text) {
   
   document.getElementById("wrapper").prepend(modalDiv);
   
-  var closeX = document.getElementsByClassName("close")[0]
+  /*var closeX = document.getElementsByClassName("close")[0]
   closeX.onclick = function() {
     var modals = document.getElementsByClassName("modalClass")
     Array.from(modals).forEach((modal) => {
       modal.remove()
     });
-  }
+  }*/
 }
 
 function closeModals() {
