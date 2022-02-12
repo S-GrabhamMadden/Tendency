@@ -241,12 +241,18 @@ function randomEvents() {
   if (modals.length == 0) {
     //1 in 14 chance that an event actually happens
     if (getRandomIntInclusive(1,20) == 20) {
-      var eventNumber = getRandomIntInclusive(1,4)
-      if (eventNumber == 1) {beggarRandomEvent()}
-      else if (eventNumber == 2) {niceWeatherRandomEvent()}
-      else if (eventNumber == 3) {findCashRandomEvent()}
-      else if (eventNumber == 4) {badDreamsRandomEvent()}
-      else if (eventNumber == 5) {goodDreamsRandomEvent()}
+      //with high enough stress, use stress events instead
+      if (gameData.stressTotal >= 50) {
+        breakingPointRandomEvent()
+      }
+      else {
+        var eventNumber = getRandomIntInclusive(1,5)
+        if (eventNumber == 1) {beggarRandomEvent()}
+        else if (eventNumber == 2) {niceWeatherRandomEvent()}
+        else if (eventNumber == 3) {findCashRandomEvent()}
+        else if (eventNumber == 4) {badDreamsRandomEvent()}
+        else if (eventNumber == 5) {goodDreamsRandomEvent()}
+      }
     }
   }
 }
@@ -277,6 +283,13 @@ function badDreamsRandomEvent() {
 function goodDreamsRandomEvent() {
   makePopup("Dreams of Power", "You've always been quite a vivid dreamer. Tonight, as you sleep, you wear a crown. Made of pearlescent bone, it fits you well, and comes accompanied with many other riches. Eventually, morning comes, but a fraction of the confidence remains.")
   addPopupOption("Maybe One Day","-5 Stress","changeStress(-5)")
+}
+
+//stress random events
+function breakingPointRandomEvent() {
+  makePopup("Breaking Point", "It feels as though you've been working yourself to the bone. You can feel the internal protest building, body and mind. Preventative action now, or corrective action later may cost a harsher price.")
+  addPopupOption("Treat Yourself","-$20, -8 Stress","changeStress(-5);changeMoney(-20)")
+  addPopupOption("Tough It Out","+4 Stress","changeStress(4)")
 }
 
 //Modal button functions
