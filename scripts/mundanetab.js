@@ -252,8 +252,9 @@ function randomEvents() {
   var modals = document.getElementsByClassName("modalClass")
   //Only check whether to pop a random event if there isn't already a modal today
   if (modals.length == 0) {
-    //1 in 14 chance that an event actually happens
-    if (getRandomIntInclusive(1,20) == 20) {
+    //1 in 20 chance that an event actually happens, and never twice in a row
+    if (getRandomIntInclusive(1,20) == 20 && gameData.eventLastDay == false) {
+      gameData.eventLastDay = true
       //with high enough stress, use stress events instead
       if (gameData.stressTotal >= 50) {
         breakingPointRandomEvent()
@@ -267,6 +268,7 @@ function randomEvents() {
         else if (eventNumber == 5) {goodDreamsRandomEvent()}
       }
     }
+    else {gameData.eventLastDay = false}
   }
 }
 

@@ -17,7 +17,8 @@ var defaultGameData = {
   vigor: 0,
   vigorPerClick: 1,
   vigorCost: 100,
-  gainVimClicks: 0
+  gainVimClicks: 0,
+  eventLastDay: false
 }
 
 var gameData = {
@@ -39,7 +40,8 @@ var gameData = {
   vigor: 0,
   vigorPerClick: 1,
   vigorCost: 100,
-  gainVimClicks: 0
+  gainVimClicks: 0,
+  eventLastDay: false
 }
 
 var defaultUnlockedTabs = {
