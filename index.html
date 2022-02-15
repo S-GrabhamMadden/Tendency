@@ -32,6 +32,7 @@
               <p id="relaxation" class="ADayInfoLabels"><button class="DayButton" id="leisureButton" onclick="mundaneLeisure()">Leisure</button> <span id="relaxationText">Relaxation: 1</scan></p>
               <p id="study" class="ADayInfoLabels"><button class="DayButton" id="classesButton" onclick="mundaneClasses()">Classes</button> <span id="studyText">Study: 1</scan></p>
               <br><p id="almanack" class="ADayInfoLabels"><button class="DayButton" id="almanackButton" onclick="mundaneAlmanack()">Poor Roy's Almanack</button> <span id="almanackPagesText">Pages: 8</scan></p>
+              <p id="esotericStudy" class="ADayInfoLabels"><button class="DayButton" id="esotericStudyButton" onclick="mundaneEsotericStudy()">Esoteric Study</button> <span id="almanackPagesText">Cost: 5 Education</scan></p>
                 
               <button id="operatorJobButton" onclick="getOperatorJob()">Opportunities at the Telephone Exchange (10 Education)</button>
               <button id="accountingJobButton" onclick="getAccountingJob()">Opportunities at Baxter & Melton's (50 Education)</button>
@@ -109,6 +110,9 @@
       }
       if (!gameData.hasAlmanack) {
         document.getElementById("almanack").style.display="none"
+      }
+      if (!gameData.esotericStudyUnlocked || gameData.esotericStudyFinished) {
+        document.getElementById("esotericStudy").style.display="none"
       }
       if (accoutrementsPurchases.radio) {document.getElementById("radioBuyButton").style.display="none"}
       if (accoutrementsPurchases.furniture || !accoutrementsPurchases.furnitureUnlock) {document.getElementById("furnitureBuyButton").style.display="none"}

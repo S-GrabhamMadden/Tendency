@@ -131,7 +131,6 @@ function mundaneClasses() {
 }
 
 function mundaneAlmanack() {
-  addMessage("The Almanack talks of \"Ominous Lore\" and \"Mystic Signs\", most of which are incomprehensible. Some seem uncomfortably familiar.")
   gameData.stressTotal += 10
   gameData.almanackPages = gameData.almanackPages-1
   console.log(gameData.almanackPages)
@@ -139,7 +138,24 @@ function mundaneAlmanack() {
   else {gameData.realization += 5}
   if (gameData.almanackPages == 0) {
     gameData.hasAlmanack = false
+    addMessage("Closing the final page of the Almanack, you struggle to dismiss it as the writings of a madman any longer. It has put you on a path, one with a destination you can not yet see.")
     document.getElementById("almanack").style.display="none"
+  }
+  else if (gameData.almanackPages == 7) {
+    addMessage("The Almanack talks of \"Ominous Lore\" and \"Mystic Signs\", most of which are incomprehensible. Some seem uncomfortably familiar.")
+  }
+  processDay()
+}
+
+function mundaneEsotericStudy() {
+  gameData.esotericStudyClicks += 1
+  gameData.stress += 2
+  gameData.education -= 5
+  gameData.realization += 5
+  if (gameData.esotericStudyClicks >= 5) {
+    gameData.esotericStudyFinished = true
+    document.getElementById("esotericStudy").style.display="none"
+    addMessage("This reservoir runs dry, no more secrets to offer which you have yet to master. You'll have to find more insights elsewhere.")
   }
   processDay()
 }
@@ -204,6 +220,11 @@ function checkUnlocks() {
     addPopupOption("Take It Home","No Going Back")
     gameData.hasAlmanack = true
     document.getElementById("almanack").style.display="inline"
+  }
+  if (!gameData.esotericStudyUnlocked && gameData.education >= 100) {
+    addMessage("Once you've memorized the shibboleths and payed your dues to the academic foundations, entirely new avenues for learning may present themselves. A restricted library's doors are opened to you.")
+    gameData.esotericStudyUnlocked = true
+    document.getElementById("esotericStudy").style.display="inline"
   }
   if (!unlockedTabs.mundaneLeisure) {
     if (gameData.stressTotal >= 10) {
@@ -281,7 +302,7 @@ function randomEvents() {
       if (gameData.stressTotal >= 50) {
         //can get realization from stress once
         if (!gameData.stressRealizationOccurred) {
-          if (getRandomIntInclusive(1,3) == 3) {
+          if (getRandomIntInclusive(1,2) == 2) {
             stressRealizationRandomEvent()
             gameData.stressRealizationOccurred = true
           }
@@ -379,7 +400,7 @@ function changeRealization(amount) {
     closeModals()
   }
   else {
-    gameData.realization + amount
+    gameData.realization += amount
     closeModals()
     updateDisplayValues()
   }

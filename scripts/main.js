@@ -25,7 +25,10 @@ var defaultGameData = {
   dreamRealizationOccurred: false,
   realization: 0,
   hasAlmanack: false,
-  almanackPages: 8
+  almanackPages: 8,
+  esotericStudyUnlocked: false,
+  esotericStudyFinished: false,
+  esotericStudyClicks: 0
 }
 
 var gameData = {
@@ -55,7 +58,10 @@ var gameData = {
   dreamRealizationOccurred: false,
   realization: 0,
   hasAlmanack: false,
-  almanackPages: 8
+  almanackPages: 8,
+  esotericStudyUnlocked: false,
+  esotericStudyFinished: false,
+  esotericStudyClicks: 0
 }
 
 var defaultUnlockedTabs = {
@@ -142,6 +148,7 @@ function fullReset() {
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
   document.getElementById("almanack").style.display="none"
+  document.getElementById("esotericStudy").style.display="none"
   document.getElementById("realization").style.display="none"
   document.getElementById("operatorJobButton").style.display="none"
   document.getElementById("accountingJobButton").style.display="none"
