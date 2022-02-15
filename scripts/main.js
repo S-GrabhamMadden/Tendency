@@ -18,7 +18,11 @@ var defaultGameData = {
   vigorPerClick: 1,
   vigorCost: 100,
   gainVimClicks: 0,
-  eventLastDay: false
+  eventLastDay: false,
+  unlockedRealization: false,
+  stressRealizationOccurred: false,
+  dreamRealizationOccurred: false,
+  realization: 0
 }
 
 var gameData = {
@@ -41,7 +45,11 @@ var gameData = {
   vigorPerClick: 1,
   vigorCost: 100,
   gainVimClicks: 0,
-  eventLastDay: false
+  eventLastDay: false,
+  unlockedRealization: false,
+  stressRealizationOccurred: false,
+  dreamRealizationOccurred: false,
+  realization: 0
 }
 
 var defaultUnlockedTabs = {
@@ -127,6 +135,7 @@ function fullReset() {
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
+  document.getElementById("realization").style.display="none"
   document.getElementById("operatorJobButton").style.display="none"
   document.getElementById("accountingJobButton").style.display="none"
   //reset styling changes if any
@@ -157,6 +166,7 @@ function updateDisplayValues() {
   document.getElementById("daysRemainingSpan").innerHTML = gameData.daysToBill
   document.getElementById("studyText").innerHTML = "Study: " + gameData.study
   document.getElementById("education").innerHTML = "Education: " + gameData.education
+  document.getElementById("realization").innerHTML = "Realization: "+gameData.realization+"%"
   //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 

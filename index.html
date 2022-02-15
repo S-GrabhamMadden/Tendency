@@ -41,6 +41,7 @@
               <p><div class="tooltip"><div id="finances" class="ADayInfoLabels">Finances: $0</div><span class="tooltiptext">Money, bought with hours of life. You must never run out.</span></div></p>
               <p><div class="tooltip"><div id="stress" class="ADayInfoLabels">Stress: 0</div><span class="tooltiptext">One's psyche is a fragile thing. If this gets too high, consequences will follow.</span></div></p>
               <p><div class="tooltip"><div id="education" class="ADayInfoLabels">Education: 0</div><span class="tooltiptext">Knowledge is a tricky thing, hard to catch and keep. When you have it, though, doors will open.</span></div></p>
+              <p><div class="tooltip"><div id="realization" class="ADayInfoLabels">Realization: 0%</div><span class="tooltiptext">Are you truly awake, or is this life just another layer of fiction? Hints leak through the cracks, promising more.</span></div></p>
             </div>
             
             <div id="MaterialWrapper" class="mundaneTabColumn">
@@ -118,6 +119,7 @@
       if (gameData.job > 2 || gameData.education < 30) {
         document.getElementById("accountingJobButton").style.display="none"
       }
+      if (!gameData.unlockedRealization) {document.getElementById("realization").style.display="none"}
     </script>
   </body>
 </html>

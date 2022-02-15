@@ -257,15 +257,28 @@ function randomEvents() {
       gameData.eventLastDay = true
       //with high enough stress, use stress events instead
       if (gameData.stressTotal >= 50) {
-        breakingPointRandomEvent()
+        //can get realization from stress once
+        if (!gameData.stressRealizationOccurred) {
+          if (getRandomIntInclusive(1,3) == 3) {
+            stressRealizationRandomEvent()
+            gameData.stressRealizationOccurred = true
+          }
+          else {
+            breakingPointRandomEvent()
+          }
+        }
+        else {
+          breakingPointRandomEvent()
+        }
       }
       else {
-        var eventNumber = getRandomIntInclusive(1,5)
+        var eventNumber = getRandomIntInclusive(1,6)
         if (eventNumber == 1) {beggarRandomEvent()}
         else if (eventNumber == 2) {niceWeatherRandomEvent()}
         else if (eventNumber == 3) {findCashRandomEvent()}
         else if (eventNumber == 4) {badDreamsRandomEvent()}
         else if (eventNumber == 5) {goodDreamsRandomEvent()}
+        else if (eventNumber == 6 && !gameData.dreamRealizationOccurred) {realizationDreamsRandomEvent();gameData.dreamRealizationOccurred=true;}
       }
     }
     else {gameData.eventLastDay = false}
@@ -300,11 +313,21 @@ function goodDreamsRandomEvent() {
   addPopupOption("Maybe One Day","-5 Stress","changeStress(-5)")
 }
 
+function realizationDreamsRandomEvent() {
+  makePopup("Dreams with Staying Power", "Tonight, as moonlight trickles through the windows, your dreams are especially vivid, incredibly so. You wander the streets of an ancient and ruined city, apparently entirely alone. Passing through the threshold into one of the vacant stone shells, a gold coin sits on a table, and you absentmindedly pocket it. A sudden roar from outside wakes you with a start, sitting up in your bed. In your hand, the coin remains.")
+  addPopupOption("Difficult to Explain", "Realization", "changeRealization(10)")
+}
+
 //stress random events
 function breakingPointRandomEvent() {
   makePopup("Breaking Point", "It feels as though you've been working yourself to the bone. You can feel the internal protest building, body and mind. Preventative action now, or corrective action later may cost a harsher price.")
   addPopupOption("Treat Yourself","-$20, -8 Stress","changeStress(-5);changeMoney(-20)")
   addPopupOption("Tough It Out","+4 Stress","changeStress(4)")
+}
+
+function stressRealizationRandomEvent() {
+  makePopup("Breaking Through", "The pressures on your mind are great - incredibly unpleasant, though, pressure creates diamonds. Laying in bed and staring into the ceiling, puzzle pieces come together that you hadn't even realized existed. Things are not entirely as they seem, are they?")
+  addPopupOption("No, Of Course Not", "Realization", "changeRealization(10)")
 }
 
 //Modal button functions
@@ -325,5 +348,26 @@ function changeStress(amount) {
   gameData.stressTotal += amount
   if (gameData.stressTotal < 0) {gameData.stressTotal = 0}
   closeModals()
+  updateDisplayValues()
+}
+
+function changeRealization(amount) {
+  if (!gameData.unlockedRealization) {
+    unlockRealization(amount)
+    closeModals()
+  }
+  else {
+    gameData.realization + amount
+    closeModals()
+    updateDisplayValues()
+  }
+}
+
+//OCCULT UNLOCK PROCESS FUNCTIONS
+
+function unlockRealization(amount = 0) {
+  document.getElementById("realization").style.display="inline"
+  gameData.unlockedRealization = true
+  gameData.realization += amount
   updateDisplayValues()
 }
