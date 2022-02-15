@@ -130,7 +130,22 @@ function mundaneClasses() {
   processDay()
 }
 
+function mundaneAlmanack() {
+  addMessage("The Almanack talks of \"Ominous Lore\" and \"Mystic Signs\", most of which are incomprehensible. Some seem uncomfortably familiar.")
+  gameData.stressTotal += 10
+  gameData.almanackPages = gameData.almanackPages-1
+  console.log(gameData.almanackPages)
+  if (!gameData.unlockedRealization) {unlockRealization(5)}
+  else {gameData.realization += 5}
+  if (gameData.almanackPages == 0) {
+    gameData.hasAlmanack = false
+    document.getElementById("almanack").style.display="none"
+  }
+  processDay()
+}
+
 function processDay() {
+  gameData.days += 1
   gameData.daysToBill -= 1
   if (gameData.daysToBill == 0) {
     billsDue()
@@ -183,6 +198,13 @@ function billsDue() {
 }
 
 function checkUnlocks() {
+  if (gameData.days == 112) {
+    //JAN 1ST, GET ALMANACK
+    makePopup("A Chance Discovery", "January first, the start of a new year. Many are still recovering from last night's festivities, but you have less luxury in the spending of your time. Out walking today, you happen to stop for a moment on a bench. Sat next to you, unattended, some sort of strange magazine. \"POOR ROY'S ALMANACK\", it is entitled. Dated for the new year, the cover page is a scrawl of maddened promises, but something about it draws you in. No one else seems to have noticed it.","almanackModal")
+    addPopupOption("Take It Home","No Going Back")
+    gameData.hasAlmanack = true
+    document.getElementById("almanack").style.display="inline"
+  }
   if (!unlockedTabs.mundaneLeisure) {
     if (gameData.stressTotal >= 10) {
       unlockedTabs.mundaneLeisure = true;

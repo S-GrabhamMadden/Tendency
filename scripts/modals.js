@@ -1,6 +1,7 @@
-function makePopup(title, text) {
+function makePopup(title, text, id = "") {
   const modalDiv = document.createElement('div');
   modalDiv.className = "modalClass"
+  modalDiv.id = id
   modalDiv.innerHTML = 
   "<div class=\"modal\">\n" +
     "<div id=\"modalcontent\" class=\"modal-content\">\n" +
@@ -21,11 +22,13 @@ function makePopup(title, text) {
   }*/
 }
 
-function closeModals() {
+function closeModals(id="") {
+  if (id != "") {document.getElementById(id).remove()}
   var modals = document.getElementsByClassName("modalClass")
-  Array.from(modals).forEach((modal) => {
+  modals[0].remove()
+  /*Array.from(modals).forEach((modal) => {
     modal.remove()
-  });
+  });*/
 }
 
 function addPopupOption(buttonText, tooltipText="", functionName="closeModals()") {

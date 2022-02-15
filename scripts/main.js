@@ -1,4 +1,5 @@
 var defaultGameData = {
+  days: 0,
   finances: 0,
   bankrupt: false,
   wage: 8,
@@ -22,10 +23,13 @@ var defaultGameData = {
   unlockedRealization: false,
   stressRealizationOccurred: false,
   dreamRealizationOccurred: false,
-  realization: 0
+  realization: 0,
+  hasAlmanack: false,
+  almanackPages: 8
 }
 
 var gameData = {
+  days: 0,
   finances: 0,
   bankrupt: false,
   wage: 8,
@@ -49,7 +53,9 @@ var gameData = {
   unlockedRealization: false,
   stressRealizationOccurred: false,
   dreamRealizationOccurred: false,
-  realization: 0
+  realization: 0,
+  hasAlmanack: false,
+  almanackPages: 8
 }
 
 var defaultUnlockedTabs = {
@@ -135,6 +141,7 @@ function fullReset() {
   document.getElementById("study").style.display="none"
   document.getElementById("institution").style.display="none"
   document.getElementById("education").style.display="none"
+  document.getElementById("almanack").style.display="none"
   document.getElementById("realization").style.display="none"
   document.getElementById("operatorJobButton").style.display="none"
   document.getElementById("accountingJobButton").style.display="none"
@@ -167,6 +174,7 @@ function updateDisplayValues() {
   document.getElementById("studyText").innerHTML = "Study: " + gameData.study
   document.getElementById("education").innerHTML = "Education: " + gameData.education
   document.getElementById("realization").innerHTML = "Realization: "+gameData.realization+"%"
+  document.getElementById("almanackPagesText").innerHTML = "Pages: "+gameData.almanackPages
   //OCCULT TAB
   document.getElementById("vimGained").innerHTML = gameData.vim + " VIM"
   document.getElementById("vimPerClickUpgrade").innerHTML = "Improved Methods " 
